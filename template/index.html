@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume-to-Job Recommendation Engine</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="../static/style.css"
+    >
+</head>
+
+<body>
+    <div class="container main-container">
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Resume-to-Job Recommendation Engine</h1>
+            <p>Find relevant jobs based on your resume and skills.</p>
+        </header>
+
+        <!-- Input Form -->
+        <section class="form-card">
+            <h2>Enter Your Details</h2>
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{{ url_for('home') }}">
+
+                <div class="mb-3">
+                    <label for="resume_text" class="form-label">
+                        Resume Text
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        id="resume_text"
+                        name="resume_text"
+                        rows="7"
+                        placeholder="Paste your resume summary, education, projects, and experience..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="skills" class="form-label">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="skills"
+                        name="skills"
+                        placeholder="Python, SQL, Machine Learning, Pandas"
+                        required
+                    >
+
+                    <small class="form-text">
+                        Separate each skill with a comma.
+                    </small>
+                </div>
+
+                <button type="submit" class="btn btn-recommend">
+                    Recommend Jobs
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Recommendation Results -->
+        {% if recommendations is not none %}
+            <section class="results-card">
+                <h2>Top 5 Recommended Jobs</h2>
+
+                {% if recommendations %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <th>Seniority</th>
+                                    <th>Matched Skills</th>
+                                    <th>Skill Match (%)</th>
+                                    <th>Combined Score</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for job in recommendations %}
+                                    <tr>
+                                        <td>{{ job.title }}</td>
+                                        <td>{{ job.seniority }}</td>
+                                        <td>
+                                            {{ job.matched_skills or "None" }}
+                                        </td>
+                                        <td>
+                                            {{ job.skill_match_percentage }}%
+                                        </td>
+                                        <td class="score">
+                                            {{ "%.4f"|format(job.combined_score) }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p>No job recommendations are available.</p>
+                {% endif %}
+
+                <p class="disclaimer">
+                    These scores rank jobs based on resume similarity
+                    and skill matching. They are not probabilities
+                    of getting hired.
+                </p>
+            </section>
+        {% endif %}
+
+        <footer class="footer">
+            <p>Resume-to-Job Recommendation Engine | Powered by Machine Learning</p>
+        </footer>
+
+    </div>
+</body>
+</html>

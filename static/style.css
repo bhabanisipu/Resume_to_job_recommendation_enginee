@@ -1,0 +1,171 @@
+body {
+    background-color: #f3f6fb;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #263445;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container */
+.main-container {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #173b70, #2864a8);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 5px 15px rgba(23, 59, 112, 0.15);
+}
+
+.header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 16px;
+    color: #e4edfa;
+}
+
+/* Form and results cards */
+.form-card,
+.results-card {
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.form-card h2,
+.results-card h2 {
+    color: #173b70;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+/* Form labels */
+.form-label {
+    font-weight: 600;
+    color: #263445;
+}
+
+/* Text inputs */
+.form-control {
+    border: 1px solid #ccd5e0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    border-color: #2864a8;
+    box-shadow: 0 0 0 3px rgba(40, 100, 168, 0.12);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.form-text {
+    display: block;
+    margin-top: 6px;
+    color: #6c7888;
+}
+
+/* Recommend button */
+.btn-recommend {
+    background-color: #173b70;
+    color: white;
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.btn-recommend:hover {
+    background-color: #0f2a50;
+    color: white;
+}
+
+/* Results table */
+.table-responsive {
+    border-radius: 8px;
+}
+
+.table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: #173b70;
+    color: white;
+    padding: 14px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 12px;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f6fd;
+}
+
+.score {
+    color: #176b43;
+    font-weight: 700;
+}
+
+/* Disclaimer */
+.disclaimer {
+    color: #6c7888;
+    font-size: 13px;
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: #758195;
+    font-size: 13px;
+    padding: 10px 0 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 20px auto;
+    }
+
+    .header {
+        padding: 25px 15px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .form-card,
+    .results-card {
+        padding: 18px;
+    }
+
+    .form-card h2,
+    .results-card h2 {
+        font-size: 20px;
+    }
+}
